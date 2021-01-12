@@ -8,6 +8,7 @@ function App() {
     const [todos, setTodos] = useState([]);
     const [status, setStatus] = useState('all');
     const [filteredTodos, setFilteredTodos] = useState([]);
+    const[editItem, setEditItem] = useState(false);
 
     useEffect(() => {
         filterHandler();
@@ -41,6 +42,8 @@ function App() {
                 todos={todos}
                 setTodos={setTodos}
                 filteredTodos={filteredTodos}
+                editItem={editItem}
+                setEditItem={setEditItem}
             />
         </div>
     );
