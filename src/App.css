@@ -41,6 +41,7 @@ form button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .todo-list {
