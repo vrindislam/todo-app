@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({text, todos, todo, setTodos, editItem, setEditItem}) => {
+const Todo = ({text, todos, todo, setTodos, }) => {
     const deleteHandler = () => {
         setTodos(todos.filter(el => el.id !== todo.id))
     }
@@ -14,11 +14,22 @@ const Todo = ({text, todos, todo, setTodos, editItem, setEditItem}) => {
             return item;
         }))
     }
-    const editHandler = () => {
+    const showEditField = () => {
         setTodos(todos.map(item => {
             if (item.id === todo.id) {
                 return {
                     ...item, edit: !item.edit
+                }
+            }
+            return item;
+        }))
+    }
+    const editRecord = (e) =>{
+        e.preventDefault();
+        setTodos(todos.map(item => {
+            if (item.id === todo.id) {
+                return {
+                    ...item, text: e.target.value
                 }
             }
             return item;
@@ -32,19 +43,19 @@ const Todo = ({text, todos, todo, setTodos, editItem, setEditItem}) => {
             <button onClick={completeHandler} className='complete-btn'>
                 <i className='fas fa-check'></i>
             </button>
-            <button className='edit-btn' onClick={editHandler}><i className='fas fa-pen'></i></button>
+            <button className='edit-btn' onClick={showEditField}><i className='fas fa-pen'></i></button>
             <button onClick={deleteHandler} className='trash-btn'>
                 <i className='fas fa-trash'></i>
             </button>
         </div>
             {todo.edit &&
             <form>
-                <input type="text" placeholder='please edit your record'/>
-                <button className="todo-button" type="submit">
-                    <i className="far fa-window-close"></i>
-                </button>
-                <button className="todo-button" type="submit">
+                <input type="text" placeholder='please edit your record' onChange={editRecord}/>
+                <button className="todo-button" onClick={showEditField}>
                     <i className="fas fa-wrench"></i>
+                </button>
+                <button className="todo-button" onClick={showEditField}>
+                    <i className="far fa-window-close"></i>
                 </button>
             </form>
             }

@@ -9,7 +9,7 @@ const Form = ({setInputText, todos, setTodos, inputText, setStatus}) => {
         setTodos([
             ...todos, {text: inputText, completed: false, id: Math.random() * 1000, edit:false}
         ]);
-        setInputText('')
+        setInputText('');
     }
     const statusHandler = (e) => {
         setStatus(e.target.value);
