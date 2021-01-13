@@ -20,12 +20,22 @@ form {
     justify-content: center;
     align-items: center;
 }
+.edit-form{
+    min-height: 10vh;
+    width: 100%;
+    justify-content: space-between;
+}
 form input,
 form button {
     padding: 0.5rem;
     font-size: 2rem;
     border: none;
     background: white;
+}
+.edit-field{
+    outline: none;
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
 }
 form button {
     color: #ff6f47;
@@ -65,6 +75,8 @@ form button:hover {
 .todo li {
     flex: 1;
 }
+.save-edit-btn,
+.cancel-edit-btn,
 .edit-btn,
 .trash-btn,
 .complete-btn {
@@ -81,6 +93,18 @@ form button:hover {
 }
 .edit-btn{
     background-color: orange;
+}
+.save-edit-btn{
+    background-color: forestgreen;
+}
+.save-edit-btn:hover{
+    background-color: forestgreen;
+}
+.cancel-edit-btn{
+    background-color: darkred;
+}
+.cancel-edit-btn:hover{
+    background-color: darkred;
 }
 .todo-item {
     padding: 0 0.5rem;

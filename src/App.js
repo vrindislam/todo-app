@@ -15,10 +15,26 @@ function App() {
     const filterHandler = () => {
         switch (status) {
             case 'completed':
-                setFilteredTodos(todos.filter(todo => todo.completed === true));
+                setFilteredTodos(todos.filter(todo => todo.completed));
                 break;
             case 'uncompleted':
-                setFilteredTodos(todos.filter(todo => todo.completed === false));
+                setFilteredTodos(todos.filter(todo => !todo.completed));
+                break;
+            case 'priority':
+                setFilteredTodos(todos.filter(todo => !todo.completed));
+                break;
+            case 'name':
+                setFilteredTodos(todos.sort(function (a,b){
+                    if (a.text > b.text){
+                        return 1;
+                        // return console.log(1);
+                    } if (a.text < b.text){
+                        return -1;
+                        // return console.log(-1);
+                    }
+                    return 0;
+                    // return console.log(0);
+                }));
                 break;
             default:
                 setFilteredTodos(todos);
