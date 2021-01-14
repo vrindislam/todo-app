@@ -163,3 +163,17 @@ select {
   transform: scale(1.5);
 }
 */
+.priority{
+    width: 3px;
+    height: 50px;
+}
+.green{
+    background-color: green;
+}
+.orange{
+
+    background-color: orange;
+}
+.red{
+    background-color: red;
+}

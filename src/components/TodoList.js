@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from "./Todo";
 
-    const TodoList = ({todos, setTodos,filteredTodos,inputText,setInputText}) => {
+    const TodoList = ({todos, setTodos,filteredTodos,inputText,setInputText, priority}) => {
     return (
         <div className="todo-container">
             <ul className="todo-list">
@@ -14,6 +14,7 @@ import Todo from "./Todo";
                     setTodos={setTodos}
                     inputText={inputText}
                     setInputText={setInputText}
+                    priority={priority}
                 />
             ))}
             </ul>
