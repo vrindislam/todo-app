@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({text, todos, todo, setTodos,}) => {
+const Todo = ({text, todos, todo, setTodos, priority}) => {
     const deleteHandler = () => {
         setTodos(todos.filter(el => el.id !== todo.id))
     }
@@ -39,6 +39,9 @@ const Todo = ({text, todos, todo, setTodos,}) => {
     return (
         <>
             <div className='todo'>
+                {todo.priority === '1' && <div className='priority green'></div>}
+                {todo.priority === '2' && <div className='priority orange'></div>}
+                {todo.priority === '3' && <div className='priority red'></div>}
                 {!todo.edit ? <>
                         <li className={`todo-item ${todo.completed && 'completed'}`}>{text}</li>
                         <button onClick={completeHandler} className='complete-btn'>
