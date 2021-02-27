@@ -24,9 +24,9 @@ function App() {
             case 'name':
                 setFilteredTodos(todos.sort(function (a,b){
                     if (a.text > b.text){
-                        return 1;
-                    } if (a.text < b.text){
                         return -1;
+                    } if (a.text < b.text){
+                        return 1;
                     }
                     return 0;
                 }));
@@ -34,9 +34,9 @@ function App() {
             case 'priority':
                 setFilteredTodos(todos.sort(function (a,b){
                     if (a.priority > b.priority){
-                        return -1;
-                    } if (a.priority < b.priority){
                         return 1;
+                    } if (a.priority < b.priority){
+                        return -1;
                     }
                     return 0;
                 }));

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Form = ({setInputText, todos, setTodos, inputText, setStatus, priority, setPriority}) => {
+    const [toggleActiveBtn, setToggleActiveBtn] = useState(false)
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
     }
@@ -46,12 +47,33 @@ const Form = ({setInputText, todos, setTodos, inputText, setStatus, priority, se
                     <option value="uncompleted">Uncompleted</option>
                 </select>
             </div>
-            <div>
-                <button type='submit' onClick={statusHandler} value='name' name='todos'>Name</button>
-            </div>
-            <div>
-                <button type='submit' onClick={statusHandler} value='priority' name='todos'>Priority</button>
-            </div>
+            <>
+                <div>
+                    <button
+                        className={toggleActiveBtn ? 'active' : undefined}
+                        type='submit'
+                        onClick={(e) => {
+                            statusHandler(e)
+                            setToggleActiveBtn(!toggleActiveBtn)
+                        }}
+                        value='name'
+                        name='todos'
+                    >Name
+                    </button>
+                </div>
+                <div>
+                    <button
+                        type='submit'
+                        onClick={(e) => {
+                            statusHandler(e)
+                            setToggleActiveBtn(!toggleActiveBtn)
+                        }}
+                        value='priority'
+                        name='todos'
+                    >Priority
+                    </button>
+                </div>
+            </>
         </form>
     );
 };
