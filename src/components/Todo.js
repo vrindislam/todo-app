@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 const Todo = ({text, todos, todo, setTodos}) => {
-        const [editItem, setEditItem] = useState(false);
 
         const deleteHandler = () => {
             setTodos(todos.filter(el => el.id !== todo.id))
