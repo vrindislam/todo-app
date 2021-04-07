@@ -41,17 +41,17 @@ const Todo = ({text, todos, todo, setTodos}) => {
         return (
             <>
                 <div className='todo'>
-                    {todo.priority === '1' && <div className='priority green'></div>}
-                    {todo.priority === '2' && <div className='priority orange'></div>}
-                    {todo.priority === '3' && <div className='priority red'></div>}
+                    {todo.priority === '1' && <div className='priority green'/>}
+                    {todo.priority === '2' && <div className='priority orange'/>}
+                    {todo.priority === '3' && <div className='priority red'/>}
                     {!todo.edit ? <>
                             <li className={`todo-item ${todo.completed && 'completed'}`}>{text}</li>
                             <button onClick={completeHandler} className='complete-btn'>
-                                <i className='fas fa-check'></i>
+                                <i className='fas fa-check'/>
                             </button>
-                            <button className='edit-btn' onClick={showEditField}><i className='fas fa-pen'></i></button>
+                            <button className='edit-btn' onClick={showEditField}><i className='fas fa-pen'/></button>
                             <button onClick={deleteHandler} className='trash-btn'>
-                                <i className='fas fa-trash'></i>
+                                <i className='fas fa-trash'/>
                             </button>
                         </>
                         : ''}
@@ -62,10 +62,10 @@ const Todo = ({text, todos, todo, setTodos}) => {
                                onChange={editRecord}/>
                         <div>
                             <button className="save-edit-btn" onClick={showEditField}>
-                                <i className="fas fa-wrench"></i>
+                                <i className="fas fa-wrench"/>
                             </button>
                             <button className="cancel-edit-btn" onClick={showEditField}>
-                                <i className="far fa-window-close"></i>
+                                <i className="far fa-window-close"/>
                             </button>
                         </div>
                     </form>

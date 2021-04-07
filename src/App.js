@@ -10,9 +10,6 @@ function App() {
     const [filteredTodos, setFilteredTodos] = useState([]);
     const [priority, setPriority] = useState('1')
 
-    useEffect(() => {
-        filterHandler();
-    }, [status, todos])
     const filterHandler = () => {
         switch (status) {
             case 'completed':
@@ -22,20 +19,22 @@ function App() {
                 setFilteredTodos(todos.filter(todo => !todo.completed));
                 break;
             case 'name':
-                setFilteredTodos(todos.sort(function (a,b){
-                    if (a.text > b.text){
+                setFilteredTodos(todos.sort(function (a, b) {
+                    if (a.text < b.text) {
                         return -1;
-                    } if (a.text < b.text){
+                    }
+                    if (a.text > b.text) {
                         return 1;
                     }
                     return 0;
                 }));
                 break;
             case 'priority':
-                setFilteredTodos(todos.sort(function (a,b){
-                    if (a.priority > b.priority){
+                setFilteredTodos(todos.sort(function (a, b) {
+                    if (a.priority > b.priority) {
                         return 1;
-                    } if (a.priority < b.priority){
+                    }
+                    if (a.priority < b.priority) {
                         return -1;
                     }
                     return 0;
@@ -46,29 +45,61 @@ function App() {
                 break;
         }
     }
+    const sortHandler = () => {
+        switch (status) {
+            case 'name':
+                setFilteredTodos(todos.sort(function (a, b) {
+                    if (a.text < b.text) {
+                        return -1;
+                    }
+                    if (a.text > b.text) {
+                        return 1;
+                    }
+                    return 0;
+                }));
+                break;
+            case 'priority':
+                setFilteredTodos(todos.sort(function (a, b) {
+                    if (a.priority > b.priority) {
+                        return 1;
+                    }
+                    if (a.priority < b.priority) {
+                        return -1;
+                    }
+                    return 0;
+                }));
+                break;
+            default:
+                setFilteredTodos(todos);
+                break;
+        }
+    }
+    useEffect(() => {
+        filterHandler();
+    }, [status, todos])
     return (
-        <div className="App">
-            <header>
-                <h1>Vrindavan's todo list</h1>
-            </header>
-            <Form
-                setInputText={setInputText}
-                todos={todos}
-                setTodos={setTodos}
-                inputText={inputText}
-                setStatus={setStatus}
-                priority={priority}
-                setPriority={setPriority}
-            />
-            <TodoList
-                todos={todos}
-                setTodos={setTodos}
-                filteredTodos={filteredTodos}
-                inputText={inputText}
-                setInputText={setInputText}
-                priority={priority}
-            />
-        </div>
+            <div className="App">
+                <header>
+                    <h1>Vrindavan's todo list</h1>
+                </header>
+                <Form
+                    setInputText={setInputText}
+                    todos={todos}
+                    setTodos={setTodos}
+                    inputText={inputText}
+                    setStatus={setStatus}
+                    priority={priority}
+                    setPriority={setPriority}
+                />
+                <TodoList
+                    filteredTodos={filteredTodos}
+                    inputText={inputText}
+                    setInputText={setInputText}
+                    priority={priority}
+                    todos={todos}
+                    setTodos={setTodos}
+                />
+            </div>
     );
 }
 
